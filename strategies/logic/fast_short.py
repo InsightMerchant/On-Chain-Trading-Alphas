@@ -1,0 +1,22 @@
+from utils.interfaces import LogicInterface
+
+class FastShortLogic(LogicInterface):
+    LOGIC_CONFIG = {
+        "short_threshold": {
+            "default": 0.0,
+            "type": float,
+            "description": "negative threshold"
+        }
+    }
+
+    def apply(self, signal, long_threshold, short_threshold, position):
+        # —— Flat: look to open a short ——
+        if position == 0:
+            return -1 if signal <= short_threshold else 0
+
+        # —— Short: look to exit ——
+        if position == -1:
+            return 0 if signal >= short_threshold else -1
+
+        # Safety default
+        return 0

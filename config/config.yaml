@@ -1,0 +1,12 @@
+data:
+  candle_path: "data/candle"
+  datasource_path: "data/datasource"
+  default_shift_override: -10
+  candle_shift_other: -60
+train_ratio: 0.65
+
+backtest:
+  fee: 0.0006
+  interval: "1m"
+
+
